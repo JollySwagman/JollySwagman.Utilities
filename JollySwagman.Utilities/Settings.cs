@@ -1,6 +1,5 @@
 ﻿using JollySwagman.Utilities.Exceptions;
 using System;
-using System.Collections.ObjectModel;
 using System.Configuration;
 
 namespace JollySwagman.Utilities
@@ -28,6 +27,16 @@ namespace JollySwagman.Utilities
             }
 
             return (T)Convert.ChangeType(value, typeof(T));
+        }
+
+        public static string GetConnectionString(string key)
+        {
+            var conn = ConfigurationManager.ConnectionStrings[key];
+            if (conn == null)
+            {
+                throw new ConnectionStringNotFoundException(key);
+            }
+            return ConfigurationManager.ConnectionStrings[key].ConnectionString;
         }
     }
 }

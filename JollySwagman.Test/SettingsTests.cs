@@ -22,5 +22,15 @@ namespace JollySwagman.Utilities.Test
                                 .With.Property("Message")
                                 .EqualTo("Key 'UnknownKey' not found in config file."));
         }
+
+        [Test]
+        public void Throw_If_ConnectionString_Not_Found()
+        {
+            Assert.That(() => Settings.GetConnectionString("UnknownKey"),
+                                Throws.Exception
+                                .TypeOf<Exceptions.ConnectionStringNotFoundException>()
+                                .With.Property("Message")
+                                .EqualTo("Connection string 'UnknownKey' not found in config file."));
+        }
     }
 }
