@@ -12,7 +12,7 @@ namespace JollySwagman.Utilities
             IgnoreIfNotFound
         }
 
-        public static T ConfigSetting<T>(string settingName) //where T : struct
+        public static T ConfigSetting<T>(string settingName)
         {
             return ConfigSetting<T>(settingName, GetSettingBehaviour.ThrowIfNotFound);
         }
